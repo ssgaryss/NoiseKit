@@ -1,6 +1,16 @@
 # NoiseKit
 
-一个不依赖第三方库的噪声生成工具，首个探索方向是 AMD SSSR 的蓝噪声采样。
+一个不依赖第三方库的噪声生成工具。
+
+```sh
+cmake -S . -B build
+cmake --build build --config Release
+
+noisekit blue
+noisekit blue --width 256 --height 256 --frame 3 --output noise.dds
+```
+
+默认在当前目录生成 128×128 的 `blue.dds`，格式为 `R8G8_UNORM`。可执行文件位于构建目录（Visual Studio 通常为 `build/Release/noisekit.exe`）。当前使用 Sobol 序列和逐像素数字 scrambling，不使用预计算表；它不保证蓝噪声频谱，也不复现 AMD SSSR 的输出。
 
 | | |
 |:---|:---|
